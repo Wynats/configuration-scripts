@@ -1,0 +1,32 @@
+version: '3'
+services: 
+  gateway:
+    build:
+      context: ./
+      dockerfile: SpringBootDockerfile 
+      args:
+        url: https://github.com/Wynats/wynats-gateway-api.git
+        project: wynats-gateway-api
+        artifactid: wynats-gateway
+        version: 0.0.1
+    image: gateway-api
+    container_name: gateway_container
+    ports: 
+      - 8080:8080
+    
+  configuration:
+    build:
+      context: ./
+      dockerfile: SpringBootDockerfile
+      args:
+        url: https://github.com/Wynats/configuration-api.git
+        project: configuration-api
+        artifactid: configuration-api
+        version: 0.0.1
+    container_name: configuration_container
+    image: configuration-api
+    #ports: 
+    #  - 8080:8080
+    
+
+
